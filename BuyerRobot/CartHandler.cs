@@ -1,6 +1,7 @@
 ﻿using HtmlAgilityPack;
 using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Linq;
 using System.Net;
 using System.Text;
@@ -34,6 +35,25 @@ namespace BuyerRobot
             var realModelValue = pdp_model.GetAttributeValue("value", string.Empty);
             HtmlNode requestKey = doc.GetElementbyId("requestKey");
             var realRequestKeyValue = requestKey.GetAttributeValue("value", string.Empty);
+
+            NameValueCollection payload = new NameValueCollection();
+            payload.Add("BV_TrackingTag_QA_Display_Sort", string.Empty);
+            payload.Add("BV_TrackingTag_Review_Display_Sort",string.Format())
+        'BV_TrackingTag_QA_Display_Sort': '',
+        '': 'http://footlocker.ugc.bazaarvoice.com/8001/' + sku + '/reviews.djs?format=embeddedhtml',
+        'coreMetricsCategory': 'blank',
+        'fulfillmentType': 'SHIP_TO_HOME',
+        'hasXYPromo': 'false',
+        'inlineAddToCart': '0,1',
+        'qty': '1',
+        'rdo_deliveryMethod': 'shiptohome',
+        'requestKey': request_key,
+        'size': size,
+        'sku': sku,
+        'storeCostOfGoods': '0.00',
+        'storeNumber': '00000',
+        'the_model_nbr': model_num
+    
 
             Console.WriteLine(content);
         }
