@@ -38,9 +38,7 @@ namespace BuyerRobot
 
             NameValueCollection payload = new NameValueCollection();
             payload.Add("BV_TrackingTag_QA_Display_Sort", string.Empty);
-            payload.Add("BV_TrackingTag_Review_Display_Sort",string.Format())
-        'BV_TrackingTag_QA_Display_Sort': '',
-        '': 'http://footlocker.ugc.bazaarvoice.com/8001/' + sku + '/reviews.djs?format=embeddedhtml',
+            payload.Add("BV_TrackingTag_Review_Display_Sort",string.Format("http://footlocker.ugc.bazaarvoice.com/8001/{0}/reviews.djs?format=embeddedhtml", realSkuValue));
         'coreMetricsCategory': 'blank',
         'fulfillmentType': 'SHIP_TO_HOME',
         'hasXYPromo': 'false',
