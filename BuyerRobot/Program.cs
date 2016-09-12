@@ -11,8 +11,10 @@ namespace BuyerRobot
     class Program
     {
         static void Main(string[] args)
-        {        
-
+        {
+            CartHandler handler = new CartHandler();
+            handler.AddToCart();
+            Console.ReadLine();
         }
     }
 }
