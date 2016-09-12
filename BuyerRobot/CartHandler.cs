@@ -39,19 +39,29 @@ namespace BuyerRobot
             NameValueCollection payload = new NameValueCollection();
             payload.Add("BV_TrackingTag_QA_Display_Sort", string.Empty);
             payload.Add("BV_TrackingTag_Review_Display_Sort",string.Format("http://footlocker.ugc.bazaarvoice.com/8001/{0}/reviews.djs?format=embeddedhtml", realSkuValue));
-        'coreMetricsCategory': 'blank',
-        'fulfillmentType': 'SHIP_TO_HOME',
-        'hasXYPromo': 'false',
-        'inlineAddToCart': '0,1',
-        'qty': '1',
-        'rdo_deliveryMethod': 'shiptohome',
-        'requestKey': request_key,
-        'size': size,
-        'sku': sku,
-        'storeCostOfGoods': '0.00',
-        'storeNumber': '00000',
-        'the_model_nbr': model_num
-    
+            payload.Add("coreMetricsCategory", "blank");
+            payload.Add("fulfillmentType", "SHIP_TO_HOME");
+            payload.Add("hasXYPromo", "false");
+            payload.Add("inlineAddToCart", "0,1");
+            payload.Add("qty", "1");
+            payload.Add("rdo_deliveryMethod", "shiptohome");
+            payload.Add("requestKey", realRequestKeyValue);
+            payload.Add("size", "10.0");
+            payload.Add("sku", realSkuValue);
+            payload.Add("storeCostOfGoods", "0.00");
+            payload.Add("storeNumber", "00000");
+            payload.Add("the_model_nbr", realModelValue);
+
+
+            wc.Headers.Add("Accept", "*/*");
+            wc.Headers.Add("Origin", "http://www.footlocker.com");
+            wc.Headers.Add("X-Requested-With", "XMLHttpRequest");
+            wc.Headers.Add("Referer", wc.BaseAddress);
+            wc.Headers.Add("Accept-Encoding", "gzip, deflate");
+
+            byte[] response = wc.UploadValues("http://www.footlocker.com/catalog/miniAddToCart.cfm?secure=0&", "POST", payload);
+            string result = System.Text.Encoding.UTF8.GetString(response);
+
 
             Console.WriteLine(content);
         }
